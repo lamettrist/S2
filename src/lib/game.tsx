@@ -6,7 +6,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
@@ -56,7 +55,7 @@ export default function GameComponent({game, setGame}: {game: gameSchema, setGam
             'name': game.name,
             'team': [...game.team],
             'id': game.id,
-            'record': game.record,
+            'record': [...game.record],
         };
         existingGame.team.push({
             'teamName': `Team ${existingGame.team.length + 1}`,
@@ -84,7 +83,7 @@ export default function GameComponent({game, setGame}: {game: gameSchema, setGam
             'name': game.name,
             'team': [...game.team],
             'id': game.id,
-            'record': game.record,
+            'record': [...game.record],
         };
         existingGame.team[index].teamName = newName;
         setGame(existingGame);
@@ -169,7 +168,7 @@ export default function GameComponent({game, setGame}: {game: gameSchema, setGam
                                                                     'name': game.name,
                                                                     'team': [...game.team],
                                                                     'id': game.id,
-                                                                    'record': game.record,
+                                                                    'record': [...game.record],
                                                                 };
                                                                 let amount = event.currentTarget.value;
                                                                 if (!isNaN(parseInt(amount))) {
@@ -188,6 +187,7 @@ export default function GameComponent({game, setGame}: {game: gameSchema, setGam
                                                                     }
                                                                 } else {
                                                                     existingGame.record[i].team[j].teamPoints = 0
+                                                                    existingGame.record[i].team[j].teamBets = NaN;
                                                                 }
                                                                 // Aggregate along all rounds and update the team points
                                                                 let totalPoints = 0;
@@ -203,7 +203,7 @@ export default function GameComponent({game, setGame}: {game: gameSchema, setGam
                                                                 existingGame.team[j].teamWon = totalWins;
                                                                 setGame(existingGame);
                                                             }} 
-                                                            defaultValue={team.teamBets}
+                                                            value={team.teamBets}
                                                             />
                                                             <Input placeholder="Won" type="number" className="w-[50%]" min={0} max={round.round} onChange={(event) => {
                                                                 event.preventDefault();
@@ -211,7 +211,7 @@ export default function GameComponent({game, setGame}: {game: gameSchema, setGam
                                                                     'name': game.name,
                                                                     'team': [...game.team],
                                                                     'id': game.id,
-                                                                    'record': game.record,
+                                                                    'record': [...game.record],
                                                                 };
                                                                 let amount = event.currentTarget.value;
                                                                     if (!isNaN(parseInt(amount))) {
@@ -229,6 +229,7 @@ export default function GameComponent({game, setGame}: {game: gameSchema, setGam
                                                                         }
                                                                     } else {
                                                                         existingGame.record[i].team[j].teamPoints = 0;
+                                                                        existingGame.record[i].team[j].teamWon = NaN;
                                                                     }
                                                                 // Aggregate along all rounds and update the team points
                                                                 let totalPoints = 0;
@@ -244,7 +245,7 @@ export default function GameComponent({game, setGame}: {game: gameSchema, setGam
                                                                 existingGame.team[j].teamWon = totalWins;
                                                                 setGame(existingGame);                                                                
                                                             }}
-                                                            defaultValue={team.teamWon}
+                                                            value={team.teamWon}
                                                             />
                                                             <h1 className="text-center text-sm text-zinc-500">Points Earned: {team.teamPoints}</h1>
                                                         </div>
