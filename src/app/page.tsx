@@ -281,7 +281,17 @@ export default function Home() {
                 <CardTitle className="font-['Pliant'] font-bold text-4xl">
                   S2
                 </CardTitle>
-                <div className="flex gap-2 flex-row">
+                <div className="flex gap-2 flex-row md:hidden items-center ">
+                  <button
+                        onClick={handleNewGame}
+                        aria-label="New game"
+                        className="ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-zinc-400 transition-all duration-200 cursor-pointer bg-zinc-200/70 hover:bg-zinc-400/70 hover:text-zinc-900"
+                      >
+                        <RxPlus className="h-4 w-4" /> 
+                  </button>
+                  <p className="text-gray-400">to launch a new game tab</p>
+                </div>
+                <div className="gap-2 flex-row hidden md:flex">
                   {
                     userAgent.includes('mac') ? (
                       <KbdGroup>
@@ -300,7 +310,7 @@ export default function Home() {
                   }
                   <p className="text-gray-400">to launch a new game tab</p>
                 </div>
-                <div className="flex gap-2 flex-row">
+                <div className="gap-2 flex-row hidden md:flex">
                   {
                     userAgent.includes('mac') ? (
                       <KbdGroup>
@@ -319,7 +329,7 @@ export default function Home() {
                   }
                   <p className="text-gray-400">to open game tab settings</p>
                 </div>
-                <div className="flex gap-2 flex-row">
+                <div className="gap-2 flex-row hidden md:flex">
                   <KbdGroup>
                     <Kbd>CTRL</Kbd>
                     <span>+</span>
