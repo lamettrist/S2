@@ -1,3 +1,5 @@
+<img width="2683" height="1797" alt="image" src="https://github.com/user-attachments/assets/0f4b4e41-c6f2-4b3b-9230-787db627a49f" />
+
 # S2
 ***S2** is an improved version of the old Spades tracker that I made before that leverages custom house rules, featuring a workspace environment, keybinds, and **TABS!*** Now, all your games can be organized so you can track and look at past games with ease, and they persist over sessions 😄
 
